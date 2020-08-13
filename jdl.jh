@@ -1,0 +1,39 @@
+application {
+  config {
+    baseName wanterre
+    applicationType monolith
+	serverPort 8080
+  }
+  
+}
+entity Photo {
+	name String,
+	image ImageBlob required,
+	description String,
+	url String,
+	created ZonedDateTime
+}
+
+entity Utilisateur{
+	prenom String required,
+    nom String required,
+    email String required,
+    telephone Integer,
+    sexe Sexe,
+    photo Photo
+}
+
+enum Sexe{
+	Homme,
+    Femme
+}
+entity Boutique{
+	adresse String,
+    logo Photo,
+    telephone Integer
+    
+}
+paginate Photo with infinite-scroll
+paginate all with pagination
+
+service all with serviceImpl except Photo
