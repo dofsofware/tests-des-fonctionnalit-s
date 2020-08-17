@@ -2,6 +2,7 @@ package com.mycompany.myapp.web.rest;
 
 import com.mycompany.myapp.domain.Photo;
 import com.mycompany.myapp.repository.PhotoRepository;
+import com.mycompany.myapp.security.AuthoritiesConstants;
 import com.mycompany.myapp.web.rest.errors.BadRequestAlertException;
 
 import io.github.jhipster.web.util.HeaderUtil;
@@ -16,6 +17,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -93,6 +95,7 @@ public class PhotoResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of photos in body.
      */
     @GetMapping("/photos")
+    @PreAuthorize("hasRole(\"" + AuthoritiesConstants.ADMIN + "\")")
     public ResponseEntity<List<Photo>> getAllPhotos(Pageable pageable) {
         log.debug("REST request to get a page of Photos");
         Page<Photo> page = photoRepository.findAll(pageable);
