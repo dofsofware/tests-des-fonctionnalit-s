@@ -1,11 +1,3 @@
-application {
-  config {
-    baseName wanterre
-    applicationType monolith
-	serverPort 8080
-  }
-  
-}
 entity Photo {
 	name String,
 	image ImageBlob required,
@@ -19,8 +11,7 @@ entity Utilisateur{
     nom String required,
     email String required,
     telephone Integer,
-    sexe Sexe,
-    photo Photo
+    sexe Sexe
 }
 
 enum Sexe{
@@ -28,11 +19,27 @@ enum Sexe{
     Femme
 }
 entity Boutique{
-	adresse String,
-    logo Photo,
-    telephone Integer
-    
+	adresse String required,
+    telephone Integer required,
+    created ZonedDateTime,
+    description TextBlob,
 }
+relationship OneToMany {
+  Boutique{photos} to Photo
+}
+relationship OneToOne {
+  Utilisateur{photos} to Photo
+}
+relationship OneToOne {
+  Utilisateur{user} to User
+}
+relationship OneToOne {
+  Boutique{Photo(image)} to Photo
+}
+relationship OneToOne {
+  Boutique{administateur} to Utilisateur
+}
+
 paginate Photo with infinite-scroll
 paginate all with pagination
 

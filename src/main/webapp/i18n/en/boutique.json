@@ -1,0 +1,28 @@
+{
+  "wanterreApp": {
+    "boutique": {
+      "home": {
+        "title": "Boutiques",
+        "createLabel": "Create a new Boutique",
+        "createOrEditLabel": "Create or edit a Boutique",
+        "notFound": "No Boutiques found"
+      },
+      "created": "A new Boutique is created with identifier {{ param }}",
+      "updated": "A Boutique is updated with identifier {{ param }}",
+      "deleted": "A Boutique is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Boutique {{ id }}?"
+      },
+      "detail": {
+        "title": "Boutique"
+      },
+      "adresse": "Adresse",
+      "telephone": "Telephone",
+      "created": "Created",
+      "description": "Description",
+      "photo": "Photo",
+      "administateur": "Administateur",
+      "photos": "Photos"
+    }
+  }
+}

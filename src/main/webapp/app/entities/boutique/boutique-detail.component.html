@@ -1,0 +1,54 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="boutique">
+            <h2><span jhiTranslate="wanterreApp.boutique.detail.title">Boutique</span> {{ boutique.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="wanterreApp.boutique.adresse">Adresse</span></dt>
+                <dd>
+                    <span>{{ boutique.adresse }}</span>
+                </dd>
+                <dt><span jhiTranslate="wanterreApp.boutique.telephone">Telephone</span></dt>
+                <dd>
+                    <span>{{ boutique.telephone }}</span>
+                </dd>
+                <dt><span jhiTranslate="wanterreApp.boutique.created">Created</span></dt>
+                <dd>
+                    <span>{{ boutique.created }}</span>
+                </dd>
+                <dt><span jhiTranslate="wanterreApp.boutique.description">Description</span></dt>
+                <dd>
+                    <span>{{ boutique.description }}</span>
+                </dd>
+                <dt><span jhiTranslate="wanterreApp.boutique.photo">Photo</span></dt>
+                <dd>
+                    <div *ngIf="boutique.photo">
+                        <a [routerLink]="['/photo', boutique.photo?.id, 'view']">{{ boutique.photo?.image }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="wanterreApp.boutique.administateur">Administateur</span></dt>
+                <dd>
+                    <div *ngIf="boutique.administateur">
+                        <a [routerLink]="['/utilisateur', boutique.administateur?.id, 'view']">{{ boutique.administateur?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/boutique', boutique.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

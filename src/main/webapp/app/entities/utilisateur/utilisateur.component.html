@@ -1,0 +1,92 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="wanterreApp.utilisateur.home.title">Utilisateurs</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-utilisateur" [routerLink]="['/utilisateur/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="wanterreApp.utilisateur.home.createLabel">
+            Create a new Utilisateur
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="utilisateurs?.length === 0">
+        <span jhiTranslate="wanterreApp.utilisateur.home.notFound">No utilisateurs found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="utilisateurs && utilisateurs.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="prenom"><span jhiTranslate="wanterreApp.utilisateur.prenom">Prenom</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="nom"><span jhiTranslate="wanterreApp.utilisateur.nom">Nom</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="email"><span jhiTranslate="wanterreApp.utilisateur.email">Email</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="telephone"><span jhiTranslate="wanterreApp.utilisateur.telephone">Telephone</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="sexe"><span jhiTranslate="wanterreApp.utilisateur.sexe">Sexe</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="photos.id"><span jhiTranslate="wanterreApp.utilisateur.photos">Photos</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="user.id"><span jhiTranslate="wanterreApp.utilisateur.user">User</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let utilisateur of utilisateurs ;trackBy: trackId" >
+                    <td><a [routerLink]="['/utilisateur', utilisateur.id, 'view']">{{ utilisateur.id }}</a></td>
+                    <td>{{ utilisateur.prenom }}</td>
+                    <td>{{ utilisateur.nom }}</td>
+                    <td>{{ utilisateur.email }}</td>
+                    <td>{{ utilisateur.telephone }}</td>
+                    <td jhiTranslate="{{ 'wanterreApp.Sexe.' + utilisateur.sexe }}">{{ utilisateur.sexe }}</td>
+                    <td>
+                        <div *ngIf="utilisateur.photos">
+                            <a [routerLink]="['/photo', utilisateur.photos?.id, 'view']" >
+                                <img [src]="'data:' + utilisateur.photos?.imageContentType + ';base64,' + utilisateur.photos?.image" style="max-height: 60px;" alt="photo image"/>
+                            </a>
+                        </div>
+                    </td>
+                    <td>
+                        {{ utilisateur.user?.login }}
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/utilisateur', utilisateur.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/utilisateur', utilisateur.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(utilisateur)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="utilisateurs && utilisateurs.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

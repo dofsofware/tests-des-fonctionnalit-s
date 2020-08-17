@@ -6,20 +6,184 @@
         <link rel="icon" th:href="@{|${baseUrl}/favicon.ico|}" />
     </head>
     <body>
-        <p th:text="#{email.activation.greeting(${user.login})}">
-            Dear
-        </p>
-        <p th:text="#{email.activation.text1}">
-            Your JHipster account has been created, please click on the URL below to activate it:
-        </p>
-        <p>
-            <a th:with="url=(@{|${baseUrl}/account/activate?key=${user.activationKey}|})" th:href="${url}"
-            th:text="${url}">Activation link</a>
-        </p>
-        <p>
-            <span th:text="#{email.activation.text2}">Regards, </span>
-            <br/>
-            <em th:text="#{email.signature}">JHipster.</em>
-        </p>
+        <!-- moiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii -->
+        <table width="100%" align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; width: 100%;" class="background"><tr><td align="center" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0;"
+            bgcolor="#F0F0F0">
+
+        <!-- WRAPPER -->
+        <!-- Set wrapper width (twice) -->
+        <table border="0" cellpadding="0" cellspacing="0" align="center"
+            width="560" style="border-collapse: collapse; border-spacing: 0; padding: 0; width: inherit;
+            max-width: 560px;" class="wrapper">
+
+            <tr>
+                <td align="center" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%;
+                    padding-top: 20px;
+                    padding-bottom: 20px;">
+
+                    <!-- PREHEADER -->
+                    <!-- Set text color to background color -->
+                    <div style="display: none; visibility: hidden; overflow: hidden; opacity: 0; font-size: 1px; line-height: 1px; height: 0; max-height: 0; max-width: 0;
+                    color: #F0F0F0;" class="preheader">
+                        </div>
+
+                    <!-- LOGO -->
+                    <!-- Image text color should be opposite to background color. Set your url, image src, alt and title. Alt text should fit the image size. Real image size should be x2. URL format: http://domain.com/?utm_source={{Campaign-Source}}&utm_medium=email&utm_content=logo&utm_campaign={{Campaign-Name}} -->
+                    <a target="_blank" style="text-decoration: none;"
+                        href="https://www.tech-xel.com"><img border="0" vspace="0" hspace="0"
+                        src="https://www.tech-xel.com/mailpro/images/logo-black.png"
+                        width="100" height="100"
+                        alt="Logo" title="Logo" style="
+                        color: #000000;
+                        font-size: 10px; margin: 0; padding: 0; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; border: none; display: block;" /></a>
+
+                </td>
+            </tr>
+
+        <!-- End of WRAPPER -->
+        </table>
+
+        <!-- WRAPPER / CONTEINER -->
+        <!-- Set conteiner background color -->
+        <table border="0" cellpadding="0" cellspacing="0" align="center"
+            bgcolor="#FFFFFF"
+            width="560" style="border-collapse: collapse; border-spacing: 0; padding: 0; width: inherit;
+            max-width: 560px;" class="container">
+
+            <!-- HERO IMAGE -->
+            <!-- Image text color should be opposite to background color. Set your url, image src, alt and title. Alt text should fit the image size. Real image size should be x2 (wrapper x2). Do not set height for flexible images (including "auto"). URL format: http://domain.com/?utm_source={{Campaign-Source}}&utm_medium=email&utm_content={{Ìmage-Name}}&utm_campaign={{Campaign-Name}} -->
+            <tr>
+                <td align="center" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0;
+                    padding-top: 20px;" class="hero"><a target="_blank" style="text-decoration: none;"
+                    href="https://www.tech-xel.com"><img border="0" vspace="0" hspace="0"
+                    src="https://www.tech-xel.com/mailpro/images/hero-wide.png"
+                    alt="Please enable images to view this content" title="Tech Xel"
+                    width="560" style="
+                    width: 100%;
+                    max-width: 560px;
+                    color: #000000; font-size: 13px; margin: 0; padding: 0; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; border: none; display: block;"/></a></td>
+            </tr>
+
+            <!-- PARAGRAPH -->
+            <!-- Set text color and font family ("sans-serif" or "Georgia, serif"). Duplicate all text styles in links, including line-height -->
+            <tr>
+                <td align="left" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%; font-size: 17px; font-weight: 400; line-height: 160%;
+                    padding-top: 25px;
+                    color: #000000;
+                    font-family: sans-serif;" class="paragraph">
+                        <!-- jhipsterrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr -->
+                        <p th:text="#{email.activation.greeting(${user.login})}">
+                            Dear
+                        </p>
+                        <p th:text="#{email.activation.text1}">
+                            Your JHipster account has been created, please click on the URL below to activate it:
+                        </p>
+                        <p>
+                            <a th:with="url=(@{|${baseUrl}/account/activate?key=${user.activationKey}|})" th:href="${url}"
+                            th:text="${url}">Activation link</a>
+                        </p>
+                        <p>
+                            <span th:text="#{email.activation.text2}">Regards, </span>
+                            <br/>
+                            <em th:text="#{email.signature}">JHipster.</em>
+                        </p>
+                        <!-- jhipsterrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr -->
+                </td>
+            </tr>
+
+            <!-- LIST -->
+            <tr>
+                <td align="center" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%;" class="list-item">
+
+            </td>
+            </tr>
+
+            <!-- LINE -->
+            <!-- Set line color -->
+            <tr>
+                <td align="center" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%;
+                    padding-top: 25px;" class="line"><hr
+                    color="#E0E0E0" align="center" width="100%" size="1" noshade style="margin: 0; padding: 0;" />
+                </td>
+            </tr>
+
+            <!-- PARAGRAPH -->
+            <!-- Set text color and font family ("sans-serif" or "Georgia, serif"). Duplicate all text styles in links, including line-height -->
+            <tr>
+                <td align="center" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%; font-size: 17px; font-weight: 400; line-height: 160%;
+                    padding-top: 20px;
+                    padding-bottom: 25px;
+                    color: #000000;
+                    font-family: sans-serif;" class="paragraph">
+                        Avez vous des questions? <a href="mailto:cheikh.tidiane@tech-xel.com" target="_blank" style="color: #6f0410; font-family: sans-serif; font-size: 17px; font-weight: 400; line-height: 160%;">cheikh.tidiane@tech-xel.com</a>
+                </td>
+            </tr>
+
+        <!-- End of WRAPPER -->
+        </table>
+
+        <!-- WRAPPER -->
+        <!-- Set wrapper width (twice) -->
+        <table border="0" cellpadding="0" cellspacing="0" align="center"
+            width="560" style="border-collapse: collapse; border-spacing: 0; padding: 0; width: inherit;
+            max-width: 560px;" class="wrapper">
+
+            <!-- SOCIAL NETWORKS -->
+            <!-- Image text color should be opposite to background color. Set your url, image src, alt and title. Alt text should fit the image size. Real image size should be x2 -->
+            <tr>
+                <td align="center" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%;
+                    padding-top: 25px;" class="social-icons"><table
+                    width="256" border="0" cellpadding="0" cellspacing="0" align="center" style="border-collapse: collapse; border-spacing: 0; padding: 0;">
+                    <tr>
+
+                        <!-- ICON 1 -->
+                        <td align="center" valign="middle" style="margin: 0; padding: 0; padding-left: 10px; padding-right: 10px; border-collapse: collapse; border-spacing: 0;"><a target="_blank"
+                            href="https://facebook.com/techxel"
+                        style="text-decoration: none;"><img border="0" vspace="0" hspace="0" style="padding: 0; margin: 0; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; border: none; display: inline-block;
+                            color: #000000;"
+                            alt="F" title="Facebook"
+                            width="44" height="44"
+                            src="https://www.tech-xel.com/mailpro/images/social-icons/facebook.png"></a></td>
+
+                        <!-- ICON 2 -->
+                        <td align="center" valign="middle" style="margin: 0; padding: 0; padding-left: 10px; padding-right: 10px; border-collapse: collapse; border-spacing: 0;"><a target="_blank"
+                            href="https://twitter.com/tech_xel"
+                        style="text-decoration: none;"><img border="0" vspace="0" hspace="0" style="padding: 0; margin: 0; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; border: none; display: inline-block;
+                            color: #000000;"
+                            alt="T" title="Twitter"
+                            width="44" height="44"
+                            src="https://www.tech-xel.com/mailpro/images/social-icons/twitter.png"></a></td>
+
+                    </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <!-- FOOTER -->
+            <!-- Set text color and font family ("sans-serif" or "Georgia, serif"). Duplicate all text styles in links, including line-height -->
+            <tr>
+                <td align="center" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%; font-size: 13px; font-weight: 400; line-height: 150%;
+                    padding-top: 20px;
+                    padding-bottom: 20px;
+                    color: #999999;
+                    font-family: sans-serif;" class="footer">
+
+                        TECH XEL se tient à la pointe des derniers développements de la technologie de sorte à pouvoir proposer et fournir des services d’avant-garde aux entreprises.</br></br>
+                        Notre ambition est de continuer à penser nos actions non seulement en termes d’impact de rentabilité mais également d’impact social, pour devenir le leader dans les domaines des services de l’ingénierie informatique au Sénégal.
+
+                        <!-- ANALYTICS -->
+                        <!-- http://www.google-analytics.com/collect?v=1&tid={{UA-Tracking-ID}}&cid={{Client-ID}}&t=event&ec=email&ea=open&cs={{Campaign-Source}}&cm=email&cn={{Campaign-Name}} -->
+                        <img width="1" height="1" border="0" vspace="0" hspace="0" style="margin: 0; padding: 0; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; border: none; display: block;"
+                        src="https://www.tech-xel.com/mailpro/images/tracker.png" />
+
+                </td>
+            </tr>
+
+        <!-- End of WRAPPER -->
+        </table>
+
+        <!-- End of SECTION / BACKGROUND -->
+        </td></tr></table>
+        <!-- moiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii -->
     </body>
 </html>
