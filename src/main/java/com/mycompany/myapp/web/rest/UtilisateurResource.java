@@ -1,6 +1,8 @@
 package com.mycompany.myapp.web.rest;
 
+import com.mycompany.myapp.domain.User;
 import com.mycompany.myapp.domain.Utilisateur;
+import com.mycompany.myapp.service.UserService;
 import com.mycompany.myapp.service.UtilisateurService;
 import com.mycompany.myapp.web.rest.errors.BadRequestAlertException;
 
@@ -9,6 +11,7 @@ import io.github.jhipster.web.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -35,13 +38,19 @@ public class UtilisateurResource {
 
     private static final String ENTITY_NAME = "utilisateur";
 
+    // par moi -------------------------------------------------------------------------------------------------------
+    private final  UserService userService;
+    // par moi -------------------------------------------------------------------------------------------------------
     @Value("${jhipster.clientApp.name}")
     private String applicationName;
 
     private final UtilisateurService utilisateurService;
 
-    public UtilisateurResource(UtilisateurService utilisateurService) {
+    public UtilisateurResource(UtilisateurService utilisateurService, UserService userService) {
         this.utilisateurService = utilisateurService;
+        // par moi -------------------------------------------------------------------------------------------------------
+        this.userService =userService;
+        // par moi -------------------------------------------------------------------------------------------------------
     }
 
     /**
@@ -57,6 +66,11 @@ public class UtilisateurResource {
         if (utilisateur.getId() != null) {
             throw new BadRequestAlertException("A new utilisateur cannot already have an ID", ENTITY_NAME, "idexists");
         }
+        // par moi -------------------------------------------------------------------------------------------------------
+        final Optional<User> isUser = userService.getUserWithAuthorities();
+        final User user = isUser.get();
+        utilisateur.setUser(user);
+        // par moi -------------------------------------------------------------------------------------------------------
         Utilisateur result = utilisateurService.save(utilisateur);
         return ResponseEntity.created(new URI("/api/utilisateurs/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
